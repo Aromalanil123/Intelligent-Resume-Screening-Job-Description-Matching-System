@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Analysis Results</title>
+    
+    <!-- Google Fonts: Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        :root {
+            --primary-color: #6366f1;
+            --primary-hover: #4f46e5;
+            --bg-gradient: linear-gradient(135deg, #f3f4f6 0%, #e5e7eb 100%);
+            --card-bg: rgba(255, 255, 255, 0.9);
+            --text-main: #1f2937;
+            --text-muted: #6b7280;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--bg-gradient);
+            color: var(--text-main);
+            min-height: 100vh;
+            padding-top: 3rem;
+            padding-bottom: 3rem;
+        }
+
+        .main-card {
+            background: var(--card-bg);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+            padding: 3rem;
+        }
+
+        h2 {
+            font-weight: 700;
+            color: var(--text-main);
+            letter-spacing: -0.5px;
+            margin-bottom: 2rem;
+        }
+
+        .table-custom {
+            border-collapse: separate;
+            border-spacing: 0 10px;
+            background: transparent;
+        }
+
+        .table-custom thead th {
+            border: none;
+            background-color: transparent;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            font-size: 0.85rem;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            padding-bottom: 15px;
+        }
+
+        .table-custom tbody tr {
+            background-color: white;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.02);
+            transition: all 0.3s ease;
+            border-radius: 12px;
+        }
+
+        .table-custom tbody tr:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .table-custom tbody td {
+            vertical-align: middle;
+            border: none;
+            padding: 20px;
+            font-size: 0.95rem;
+        }
+
+        .table-custom tbody td:first-child {
+            border-top-left-radius: 12px;
+            border-bottom-left-radius: 12px;
+        }
+
+        .table-custom tbody td:last-child {
+            border-top-right-radius: 12px;
+            border-bottom-right-radius: 12px;
+        }
+
+        .rank-circle {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            background-color: #e0e7ff;
+            color: var(--primary-color);
+            font-weight: 700;
+        }
+
+        .score-text {
+            font-weight: 700;
+            color: var(--text-main);
+        }
+
+        .badge-good {
+            background-color: #d1fae5;
+            color: #065f46;
+        }
+
+        .badge-average {
+            background-color: #fef3c7;
+            color: #92400e;
+        }
+
+        .badge-poor {
+            background-color: #fee2e2;
+            color: #b91c1c;
+        }
+        
+        .badge {
+            padding: 0.5em 0.8em;
+            font-weight: 600;
+            border-radius: 8px;
+        }
+
+        .skill-tag {
+            display: inline-block;
+            background-color: #f3f4f6;
+            color: #4b5563;
+            padding: 4px 10px;
+            border-radius: 6px;
+            font-size: 0.85rem;
+            margin: 2px;
+            border: 1px solid #e5e7eb;
+        }
+
+        .skill-tag.missing {
+            background-color: #fff1f2;
+            color: #be123c;
+            border-color: #fecdd3;
+        }
+
+        .btn-custom {
+            background-color: white;
+            color: var(--text-main);
+            border: 1px solid #e5e7eb;
+            font-weight: 600;
+            padding: 0.75rem 1.5rem;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+        }
+
+        .btn-custom:hover {
+            background-color: #f9fafb;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            color: var(--text-main);
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <div class="container">
+        <div class="main-card">
+
+            <div class="d-flex justify-content-between align-items-center mb-5">
+                <h2><i class="fas fa-chart-line text-primary me-2"></i>Analysis Results</h2>
+                <a href="/" class="btn btn-custom">
+                    <i class="fas fa-arrow-left me-2"></i>New Analysis
+                </a>
+            </div>
+
+            <div class="accordion" id="resultsAccordion">
+                {% for jd_result in results %}
+                {% set outer_loop = loop %}
+                <div class="accordion-item mb-4 border-0 shadow-sm" style="border-radius: 15px; overflow: hidden; background: white;">
+                    <h2 class="accordion-header" id="heading{{ loop.index }}">
+                        <button class="accordion-button {% if not loop.first %}collapsed{% endif %}" type="button" data-bs-toggle="collapse" data-bs-target="#collapse{{ loop.index }}" aria-expanded="{% if loop.first %}true{% else %}false{% endif %}" aria-controls="collapse{{ loop.index }}" style="background-color: #f8fafc; color: var(--text-main); font-weight: 600;">
+                            <i class="fas fa-briefcase text-primary me-3"></i> Job Profile: {{ jd_result.jd_title }}
+                        </button>
+                    </h2>
+                    <div id="collapse{{ loop.index }}" class="accordion-collapse collapse {% if loop.first %}show{% endif %}" aria-labelledby="heading{{ loop.index }}" data-bs-parent="#resultsAccordion">
+                        <div class="accordion-body p-0">
+                            <div class="table-responsive">
+                                <table class="table table-custom mb-0">
+                                    <thead>
+                                        <tr>
+                                            <th class="text-center" style="padding-top: 20px;">Rank</th>
+                                            <th style="padding-top: 20px;">Candidate</th>
+                                            <th class="text-center" style="padding-top: 20px;">Match Score</th>
+                                            <th class="text-center" style="padding-top: 20px;">Fit Level</th>
+                                            <th style="padding-top: 20px;">Matched Skills</th>
+                                            <th style="padding-top: 20px;">Missing Skills</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {% for r in jd_result.candidates %}
+                                        <tr>
+                                            <td class="text-center">
+                                                <span class="rank-circle">{{ r.rank }}</span>
+                                            </td>
+                                            <td>
+                                                <strong>{{ r.name }}</strong><br>
+                                                <button class="btn btn-sm btn-outline-primary mt-2" onclick="viewResume({{ outer_loop.index }}, {{ loop.index }})">
+                                                    <i class="fas fa-eye me-1"></i>View
+                                                </button>
+                                                <!-- Hidden data -->
+                                                <div id="resume-data-{{ outer_loop.index }}-{{ loop.index }}" class="d-none">
+                                                    <div class="resume-name">{{ r.name }}</div>
+                                                    <div class="resume-skills">{{ r.matched_skills | join(',') }}</div>
+                                                    <div class="resume-text">{{ r.text | e }}</div>
+                                                </div>
+                                            </td>
+                                            <td class="text-center">
+                                                <span class="score-text">{{ r.score }}%</span>
+                                            </td>
+                                            <td class="text-center">
+                                                {% if r.fit == "Good" %}
+                                                <span class="badge badge-good"><i class="fas fa-check-circle me-1"></i>Good</span>
+                                                {% elif r.fit == "Average" %}
+                                                <span class="badge badge-average"><i class="fas fa-minus-circle me-1"></i>Average</span>
+                                                {% else %}
+                                                <span class="badge badge-poor"><i class="fas fa-times-circle me-1"></i>Poor</span>
+                                                {% endif %}
+                                            </td>
+                                            <td>
+                                                {% if r.matched_skills %}
+                                                    {% for skill in r.matched_skills %}
+                                                        <span class="skill-tag">{{ skill }}</span>
+                                                    {% endfor %}
+                                                {% else %}
+                                                    <span class="text-muted small">None matched</span>
+                                                {% endif %}
+                                            </td>
+                                            <td>
+                                                {% if r.missing_skills %}
+                                                    {% for skill in r.missing_skills %}
+                                                        <span class="skill-tag missing">{{ skill }}</span>
+                                                    {% endfor %}
+                                                {% else %}
+                                                    <span class="text-muted small">None missing</span>
+                                                {% endif %}
+                                            </td>
+                                        </tr>
+                                        {% endfor %}
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+            
+            <!-- Bootstrap JS for Accordions -->
+            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+        </div>
+    </div>
+
+    <!-- Resume Modal -->
+    <div class="modal fade" id="resumeModal" tabindex="-1" aria-labelledby="resumeModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-lg modal-dialog-scrollable">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="resumeModalLabel">Resume Text</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body" id="resumeModalBody" style="white-space: pre-wrap; font-family: monospace; font-size: 14px; line-height: 1.6; color: #374151;">
+            ...
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+        function viewResume(outerIdx, innerIdx) {
+            const dataDiv = document.getElementById(`resume-data-${outerIdx}-${innerIdx}`);
+            const name = dataDiv.querySelector('.resume-name').innerText;
+            const skillsStr = dataDiv.querySelector('.resume-skills').innerText;
+            const text = dataDiv.querySelector('.resume-text').innerText;
+            
+            // Escape HTML for security
+            const safeText = text.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+            
+            let highlightedText = safeText;
+            
+            if (skillsStr) {
+                const skills = skillsStr.split(',');
+                skills.forEach(skill => {
+                    if (!skill) return;
+                    const regex = new RegExp(`\\b(${escapeRegExp(skill)})\\b`, 'gi');
+                    highlightedText = highlightedText.replace(regex, '<mark class="bg-success text-white px-1 rounded">$&</mark>');
+                });
+            }
+            
+            document.getElementById('resumeModalLabel').innerText = name;
+            document.getElementById('resumeModalBody').innerHTML = highlightedText;
+            
+            const modal = new bootstrap.Modal(document.getElementById('resumeModal'));
+            modal.show();
+        }
+        
+        function escapeRegExp(string) {
+            return string.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+        }
+    </script>
+</body>
+
+</html>

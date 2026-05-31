@@ -1,0 +1,13 @@
+[
+    "python", "java", "c++", "c#", "javascript", "typescript", "ruby", "php", "swift", "kotlin", "go", "rust", "sql", "nosql", "html", "css",
+    "react", "angular", "vue", "node.js", "express.js", "django", "flask", "spring boot", "ruby on rails", "laravel", "asp.net", "graphql", "rest api", "grpc",
+    "aws", "azure", "google cloud", "docker", "kubernetes", "terraform", "ansible", "jenkins", "github actions", "gitlab ci", "circleci",
+    "machine learning", "deep learning", "artificial intelligence", "data science", "data analysis", "pandas", "numpy", "scikit-learn", "tensorflow", "pytorch", "keras", "nlp", "computer vision", "tableau", "power bi", "looker",
+    "mongodb", "postgresql", "mysql", "oracle", "redis", "elasticsearch", "cassandra", "dynamodb", "snowflake", "redshift", "bigquery",
+    "agile", "scrum", "kanban", "jira", "confluence", "trello", "git", "github", "gitlab", "bitbucket",
+    "project management", "product management", "leadership", "communication", "teamwork", "problem solving", "critical thinking", "time management", "adaptability",
+    "seo", "sem", "content marketing", "social media marketing", "email marketing", "google analytics", "hubspot", "salesforce", "crm", "lead generation",
+    "ui design", "ux design", "figma", "sketch", "adobe xd", "photoshop", "illustrator", "wireframing", "prototyping", "user research",
+    "financial analysis", "accounting", "excel", "financial modeling", "budgeting", "forecasting", "risk management",
+    "nursing", "patient care", "cpr", "bls", "acls", "electronic health records", "ehr", "emr", "epic", "cerner"
+]
