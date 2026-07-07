@@ -239,7 +239,7 @@ View:
 
 **Aspiring Data Scientist | AI & Machine Learning Enthusiast**
 
-📧 Email: [your-email@example.com](mailto:your-email@example.com)
+📧 Email: [your-email@example.com](aromalanil21@gmail.com)
 
 🔗 GitHub: https://github.com/Aromalanil123
 
