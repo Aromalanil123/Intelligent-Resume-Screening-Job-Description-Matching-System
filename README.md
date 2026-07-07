@@ -30,7 +30,6 @@ An AI-powered recruitment assistant that automatically analyzes resumes, compare
 * Project Structure
 * Installation
 * Usage
-* Screenshots
 * Future Improvements
 * Author
 
@@ -48,31 +47,21 @@ The system extracts text from resumes, preprocesses it, compares it against the 
 
 # ✨ Features
 
-✅ Resume Upload (PDF)
-
-✅ Automatic Resume Parsing
-
-✅ Job Description Analysis
-
-✅ NLP Text Cleaning
-
-✅ Skill Extraction
-
-✅ TF-IDF Vectorization
-
-✅ Cosine Similarity Matching
-
-✅ Resume Ranking
-
-✅ Match Percentage
-
-✅ Interactive Dashboard
-
-✅ Easy-to-use Interface
+* ✅ Resume Upload (PDF)
+* ✅ Automatic Resume Parsing
+* ✅ Job Description Analysis
+* ✅ NLP Text Cleaning
+* ✅ Skill Extraction
+* ✅ TF-IDF Vectorization
+* ✅ Cosine Similarity Matching
+* ✅ Resume Ranking
+* ✅ Match Percentage
+* ✅ Interactive Dashboard
+* ✅ Easy-to-use Interface
 
 ---
 
-# ⚙ System Workflow
+# ⚙️ System Workflow
 
 ```text
           Resume (PDF)
@@ -135,9 +124,7 @@ Resume-Screening-System
 ├── uploads/
 ├── assets/
 │    ├── banner.png
-│    ├── workflow.png
-│    ├── dashboard.png
-│    └── demo.gif
+│    └── workflow.png
 └── README.md
 ```
 
@@ -153,11 +140,9 @@ git clone https://github.com/Aromalanil123/Intelligent-Resume-Screening-Job-Desc
 cd Intelligent-Resume-Screening-Job-Description-Matching-System
 ```
 
----
-
 ## Create Virtual Environment
 
-Windows
+### Windows
 
 ```bash
 python -m venv venv
@@ -165,7 +150,7 @@ python -m venv venv
 venv\Scripts\activate
 ```
 
-Linux / Mac
+### Linux / macOS
 
 ```bash
 python3 -m venv venv
@@ -173,17 +158,13 @@ python3 -m venv venv
 source venv/bin/activate
 ```
 
----
-
 ## Install Dependencies
 
 ```bash
 pip install -r requirements.txt
 ```
 
----
-
-## Run Application
+## Run the Application
 
 ```bash
 streamlit run app.py
@@ -203,25 +184,25 @@ python app.py
 
 Upload a Resume (PDF)
 
-↓
+⬇️
 
 ### Step 2
 
 Paste the Job Description
 
-↓
+⬇️
 
 ### Step 3
 
 Click **Analyze**
 
-↓
+⬇️
 
 ### Step 4
 
-View
+View:
 
-* Resume Score
+* Resume Match Score
 * Matching Skills
 * Missing Skills
 * Similarity Percentage
@@ -229,84 +210,26 @@ View
 
 ---
 
-# 📊 Matching Process
-
-```text
-Resume
-      │
-      ▼
-Resume Parsing
-      │
-      ▼
-Preprocessing
-      │
-      ▼
-Skill Extraction
-      │
-      ▼
-TF-IDF Vectorizer
-      │
-      ▼
-Cosine Similarity
-      │
-      ▼
-Final Match Score
-```
-
----
-
-# 📸 Screenshots
-
-## Home Page
-
-<img src="assets/home.png" width="100%">
-
----
-
-## Resume Upload
-
-<img src="assets/upload.png" width="100%">
-
----
-
-## Analysis Dashboard
-
-<img src="assets/dashboard.png" width="100%">
-
----
-
-## Match Result
-
-<img src="assets/result.png" width="100%">
-
----
-
 # 📈 Future Improvements
 
-* Resume Ranking using BERT Embeddings
-* LLM-powered Resume Analysis
-* Multi-Resume Comparison
-* ATS Compatibility Score
-* Recruiter Dashboard
-* Candidate Recommendation Engine
-* Resume Feedback Generator
-* Skill Gap Analysis
-* Email Notifications
-* Cloud Deployment
+* 🤖 LLM-powered semantic resume matching
+* 📚 FAISS vector database integration
+* 💬 AI-generated recruiter feedback
+* 📂 Multi-resume comparison and ranking
+* 📧 Email notifications for shortlisted candidates
+* ☁️ Cloud deployment using Docker and Render
+* 📊 Recruiter analytics dashboard
+* 📈 Skill gap analysis and recommendations
 
 ---
 
 # 🌟 Why This Project?
 
-✔ Automates manual resume screening
-
-✔ Reduces recruiter effort
-
-✔ Improves hiring efficiency
-
-✔ Provides objective candidate evaluation
-
-✔ Demonstrates practical NLP and Machine Learning skills
+* ✔ Automates manual resume screening
+* ✔ Reduces recruiter effort and screening time
+* ✔ Improves hiring efficiency through AI-powered matching
+* ✔ Provides objective candidate evaluation
+* ✔ Demonstrates practical applications of NLP and Machine Learning
 
 ---
 
@@ -316,14 +239,12 @@ Final Match Score
 
 **Aspiring Data Scientist | AI & Machine Learning Enthusiast**
 
-📧 Email: **[your-email@example.com](mailto:your-email@example.com)**
+📧 Email: [your-email@example.com](mailto:your-email@example.com)
 
-🔗 GitHub: **https://github.com/Aromalanil123**
+🔗 GitHub: https://github.com/Aromalanil123
 
 ---
 
 <p align="center">
-
-⭐ If you found this project useful, consider giving it a **Star** on GitHub!
-
+⭐ If you found this project useful, consider giving it a <b>Star</b> on GitHub!
 </p>
