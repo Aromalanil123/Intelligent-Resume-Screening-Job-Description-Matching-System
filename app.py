@@ -4,6 +4,13 @@ import os
 
 app = Flask(__name__)
 
+# Configuration
+app.config['MAX_CONTENT_LENGTH'] = 50 * 1024 * 1024  # 50MB max file size
+app.config['UPLOAD_FOLDER'] = os.getenv('UPLOAD_FOLDER', 'uploads')
+
+# Create uploads folder if it doesn't exist
+os.makedirs(app.config['UPLOAD_FOLDER'], exist_ok=True)
+
 @app.route('/')
 def home():
     return render_template('index.html', error=None)
@@ -67,5 +74,14 @@ def analyze():
         return render_template('index.html', error="An error occurred while analyzing the resumes. Please try again or check your files.")
 
 
+@app.route('/health', methods=['GET'])
+def health():
+    """Health check endpoint for deployment monitoring"""
+    return {'status': 'healthy'}, 200
+
+
 if __name__ == "__main__":
-    app.run(debug=False)
+    # Get port from environment variable or default to 8000
+    port = int(os.getenv('PORT', 8000))
+    debug = os.getenv('FLASK_ENV', 'production') == 'development'
+    app.run(host='0.0.0.0', port=port, debug=debug)
